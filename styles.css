@@ -620,6 +620,21 @@ html { scrollbar-color: var(--wine) var(--night); scrollbar-width: thin; }
 /* only the side facing you takes clicks (browsers still hit-test hidden backfaces) */
 .leaf.flipped .face--front,
 .leaf:not(.flipped) .face--back { pointer-events: none; }
+/* swap the visible side exactly halfway through the turn (Safari can ignore backface-visibility) */
+.leaf .face { transition: visibility 0s linear .55s; }
+.leaf:not(.flipped) .face--back,
+.leaf.flipped .face--front { visibility: hidden; }
+/* let sideways swipes reach the page-turn code on touch screens */
+.stack { touch-action: pan-y; }
+/* keep the folded corner clear of the cut-out titles */
+.stack .ransom--bottom { right: 9%; }
+@media (hover: none) {
+  /* no sticky enlarged photos after a tap on phones */
+  .page > figure:hover { transform: none; z-index: 2; }
+  .page > figure.tilt-l:hover { rotate: -4deg; }
+  .page > figure.tilt-r:hover { rotate: 3.5deg; }
+  .cluster figure:hover { transform: none; }
+}
 /* shade the page as it turns */
 .leaf .face::after {
   content: "";

@@ -59,13 +59,13 @@
 /* --- right page: the video inside a capsule --- */
 .pill-words {
   position: absolute;
-  top: 6cqh;
+  top: 4cqh;
   left: 8cqw;
   right: 8cqw;
   margin: 0;
   font-family: var(--script);
-  font-size: 5cqw;
-  line-height: 1.5;
+  font-size: 4.4cqw;
+  line-height: 1.45;
   color: var(--burgundy);
   rotate: -3deg;
   z-index: 3;
@@ -73,18 +73,19 @@
 .pill {
   position: absolute;
   left: 50%;
-  bottom: 6cqh;
-  width: 42cqw;
-  aspect-ratio: 9 / 16.6;
+  bottom: 3cqh;
+  /* the video is portrait 9:16, so the capsule keeps exactly that shape: nothing cropped or turned */
+  width: min(50cqw, calc(73cqh * 9 / 16));
+  aspect-ratio: 9 / 16;
   translate: -50% 0;
-  rotate: 4deg;
-  border-radius: 999px;
+  rotate: 2deg;
+  border-radius: 14cqw;
   overflow: hidden;
   background: #000;
   box-shadow: 0 2cqw 4cqw rgba(43,26,20,.45);
   z-index: 3;
 }
-.pill video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.pill video { display: block; width: 100%; height: 100%; object-fit: contain; background: #000; }
 /* capsule shell: tinted burgundy top half, clear bottom half, seam in the middle */
 .pill__shell {
   position: absolute;
@@ -97,7 +98,7 @@
   box-shadow: inset 0 0 0 1.2cqw rgba(107,15,26,.85), inset 0 0 0 1.8cqw rgba(255,250,243,.5);
   transition: opacity .6s;
 }
-.pill.playing .pill__shell { opacity: .35; }
+.pill.playing .pill__shell { opacity: 0; }
 .pill__play {
   position: absolute;
   top: 50%;
@@ -145,3 +146,65 @@
   z-index: 3;
 }
 .loved .polaroid figcaption { font-size: 4cqw; }
+
+/* ==========================================================
+   Special message: draw the curtain to reveal the video
+   ========================================================== */
+.message__frame { overflow: hidden; }
+.curtain {
+  --open: 0;
+  position: absolute;
+  inset: 2.4cqw 2.4cqw 6cqw;
+  overflow: hidden;
+  touch-action: none;
+  z-index: 2;
+}
+.curtain__half {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 51%;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.25), transparent 18%, transparent 80%, rgba(0,0,0,.35)),
+    repeating-linear-gradient(90deg, #4a0b14 0 1.2cqw, #8c1c2b 2.6cqw, #a52a3a 3.4cqw, #6b0f1a 4.6cqw, #4a0b14 5.6cqw);
+  box-shadow: inset 0 0 3cqw rgba(0,0,0,.45);
+}
+.curtain__half--l { left: 0; transform: translateX(calc(var(--open) * -100%)); border-right: 1px solid rgba(0,0,0,.4); }
+.curtain__half--r { right: 0; transform: translateX(calc(var(--open) * 100%)); border-left: 1px solid rgba(255,255,255,.08); }
+.curtain.animating .curtain__half { transition: transform .9s cubic-bezier(.6,.05,.3,1); }
+/* gold-trimmed valance across the top */
+.curtain__valance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 9%;
+  background:
+    radial-gradient(circle at 50% 100%, transparent 62%, #c9a55a 64% 72%, transparent 74%) 0 100% / 7cqw 3.5cqw repeat-x,
+    linear-gradient(180deg, #6b0f1a, #4a0b14);
+  box-shadow: 0 .6cqw 1.4cqw rgba(0,0,0,.4);
+  z-index: 2;
+}
+.curtain__hint {
+  position: absolute;
+  left: 50%;
+  bottom: 12%;
+  translate: -50% 0;
+  padding: 1cqw 3cqw;
+  white-space: nowrap;
+  font-family: var(--hand);
+  font-size: 4.4cqw;
+  color: #f1dc9e;
+  background: rgba(36,5,11,.8);
+  border: 1px solid #c9a55a;
+  border-radius: 99px;
+  pointer-events: none;
+  z-index: 3;
+  animation: hint-nudge 2.4s ease-in-out infinite;
+  transition: opacity .3s;
+}
+@keyframes hint-nudge { 0%, 100% { translate: -50% 0; } 50% { translate: -50% -.8cqw; } }
+.curtain.dragging .curtain__hint,
+.curtain.open .curtain__hint { opacity: 0; }
+.curtain.open { pointer-events: none; }
+.curtain.open .curtain__valance { transition: transform .6s .5s; transform: translateY(-100%); }

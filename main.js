@@ -2,6 +2,8 @@
 (() => {
   const BIRTHDAY = new Date(2026, 9, 29, 0, 0, 0); // 29 Oct 2026, local time
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // phones and tablets: a tap on a book photo turns the page instead of opening the lightbox
+  const touchOnly = matchMedia("(hover: none)").matches;
 
   /* ---------------- gate ---------------- */
   const gate = document.getElementById("gate");
@@ -192,7 +194,8 @@
     }
     stack.addEventListener("click", (e) => {
       // photos open the lightbox; buttons and the video do their own thing
-      if (e.target.closest("img, button, video, .no-flip")) return;
+      if (e.target.closest("button, video, .no-flip")) return;
+      if (!touchOnly && e.target.closest("img")) return;
       if (onLeftSide(e.clientX) || e.target.closest(".face--back")) turn(-1);
       else turn(1);
     });
@@ -227,6 +230,44 @@
     });
     layer();
     updateCount();
+  });
+
+  /* ---------------- special message: draw the curtain ---------------- */
+  document.querySelectorAll(".curtain").forEach((curtain) => {
+    const video = curtain.parentElement.querySelector("video");
+    let startX = null;
+    let open = 0;
+    const set = (v) => { open = Math.min(Math.max(v, 0), 1); curtain.style.setProperty("--open", open); };
+    function reveal() {
+      curtain.classList.add("animating", "open");
+      set(1);
+      setTimeout(() => {
+        video.controls = true;
+        video.play().catch(() => {});
+      }, 750);
+    }
+    curtain.addEventListener("pointerdown", (e) => {
+      startX = e.clientX;
+      curtain.classList.remove("animating");
+      curtain.classList.add("dragging");
+      curtain.setPointerCapture(e.pointerId);
+    });
+    curtain.addEventListener("pointermove", (e) => {
+      if (startX === null) return;
+      // drag either way: each half follows the finger out to the side
+      set(Math.abs(e.clientX - startX) / (curtain.clientWidth * 0.45));
+    });
+    curtain.addEventListener("pointerup", (e) => {
+      if (startX === null) return;
+      const moved = Math.abs(e.clientX - startX);
+      startX = null;
+      curtain.classList.remove("dragging");
+      // a tap, or a drag past about a third of the way, opens it fully
+      if (moved < 6 || open > 0.33) reveal();
+      else { curtain.classList.add("animating"); set(0); }
+    });
+    curtain.addEventListener("pointercancel", () => { startX = null; curtain.classList.add("animating"); set(0); });
+    curtain.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); reveal(); } });
   });
 
   /* ---------------- the time pill video ---------------- */
@@ -267,7 +308,7 @@
   const lbImg = lb.querySelector("img");
   document.addEventListener("click", (e) => {
     const img = e.target.closest(".page img, .phase__img img, .film__track img, .letter__pic img, .hero__arch img");
-    if (!img || img.closest("button")) return;
+    if (!img || img.closest("button") || (touchOnly && img.closest(".stack"))) return;
     lbImg.src = img.src;
     lb.hidden = false;
   });
