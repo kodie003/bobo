@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy 21st, Sela</title>
+  <meta name="description" content="For Sela, on her 21st — 29.10.2026" />
+  <meta name="theme-color" content="#4a0b14" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%234a0b14'/><path d='M40 14a20 20 0 1 0 10 30A16 16 0 1 1 40 14z' fill='%23f6efe4'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&family=Pinyon+Script&family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Homemade+Apple&family=Special+Elite&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="netflix.css?v=9" />
+  <link rel="stylesheet" href="pill.css?v=9" />
+</head>
+<body>
+  <!-- floating bubbles live on this canvas -->
+  <canvas id="bubbles" aria-hidden="true"></canvas>
+
+  <!-- ============ OPENING GATE ============ -->
+  <div class="gate" id="gate">
+    <canvas id="space" aria-hidden="true"></canvas>
+    <div class="planet-label" id="planetLabel" aria-hidden="true"></div>
+    <div class="gate__inner">
+      <p class="gate__to">for</p>
+      <h1 class="gate__name">Sela</h1>
+      <button class="seal" id="openBtn" aria-label="Open your birthday surprise">
+        <span>S</span>
+      </button>
+      <p class="gate__hint">break the seal · hover the planets</p>
+    </div>
+  </div>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="sky" aria-hidden="true"></div>
+      <div class="moon" aria-hidden="true">
+        <div class="moon__face"></div>
+      </div>
+
+      <div class="hero__text">
+        <p class="kicker">29 · October · 2026</p>
+        <h2 class="hero__title">
+          <span class="line">Happy</span>
+          <span class="line big">21<sup>st</sup></span>
+          <span class="line script">Sela</span>
+        </h2>
+
+        <div class="countdown" id="countdown" aria-live="polite">
+          <div><b data-u="d">00</b><small>days</small></div>
+          <div><b data-u="h">00</b><small>hrs</small></div>
+          <div><b data-u="m">00</b><small>min</small></div>
+          <div><b data-u="s">00</b><small>sec</small></div>
+        </div>
+        <p class="countdown__done" id="countdownDone" hidden>It's your day.</p>
+      </div>
+
+      <figure class="hero__arch reveal">
+        <img src="photos/baby.jpg" alt="Sela as a baby" />
+        <figcaption>the birthday girl</figcaption>
+      </figure>
+
+    </section>
+
+    <!-- ============ PHASES OF SELA ============ -->
+    <section class="phases" id="phases">
+      <header class="section-head reveal">
+        <p class="kicker light">every phase of her</p>
+        <h2>Phases of Sela</h2>
+      </header>
+
+      <ol class="phase-row">
+        <li class="phase reveal" data-phase="new"><div class="phase__img"><img src="photos/p09.jpg" alt="" loading="lazy" /></div><span>new</span></li>
+        <li class="phase reveal" data-phase="wax-cres"><div class="phase__img"><img src="photos/p14.jpg" alt="" loading="lazy" /></div><span>crescent</span></li>
+        <li class="phase reveal" data-phase="first-q"><div class="phase__img"><img src="photos/p36.jpg" alt="" loading="lazy" /></div><span>first quarter</span></li>
+        <li class="phase reveal" data-phase="wax-gib"><div class="phase__img"><img src="photos/p39.jpg" alt="" loading="lazy" /></div><span>gibbous</span></li>
+        <li class="phase reveal" data-phase="full"><div class="phase__img"><img src="photos/p24.jpg" alt="" loading="lazy" /></div><span>full</span></li>
+        <li class="phase reveal" data-phase="wan-gib"><div class="phase__img"><img src="photos/p27.jpg" alt="" loading="lazy" /></div><span>gibbous</span></li>
+        <li class="phase reveal" data-phase="last-q"><div class="phase__img"><img src="photos/p35.jpg" alt="" loading="lazy" /></div><span>last quarter</span></li>
+        <li class="phase reveal" data-phase="wan-cres"><div class="phase__img"><img src="photos/p15.jpg" alt="" loading="lazy" /></div><span>crescent</span></li>
+      </ol>
+      <p class="phases__note reveal"><span class="on-hover">hover</span><span class="on-touch">tap</span> a moon · you're beautiful in all of them</p>
+    </section>
+
+    <!-- ============ SCRAPBOOK: US ============ -->
+    <section class="book-wrap" id="us">
+      <div class="book reveal">
+        <!-- left page -->
+        <div class="page page--left paper">
+          <div class="news" aria-hidden="true"></div>
+          <h3 class="ransom" aria-label="soul">
+            <i>s</i><i>o</i><i>u</i><i>l</i>
+          </h3>
+
+          <figure class="snap taped tilt-l" style="--w:62%; --top:14%; --left:6%">
+            <img src="photos/p22.jpg" alt="Sela and friend outdoors" loading="lazy" />
+          </figure>
+          <figure class="polaroid tilt-r" style="--w:40%; --top:8%; --left:56%">
+            <img src="photos/p34.jpg" alt="night selfie" loading="lazy" />
+            <figcaption>late nights</figcaption>
+          </figure>
+          <figure class="oval" style="--w:38%; --top:54%; --left:4%">
+            <img src="photos/p06.jpg" alt="" loading="lazy" />
+          </figure>
+          <figure class="snap torn tilt-r" style="--w:46%; --top:50%; --left:46%">
+            <img src="photos/p16.jpg" alt="" loading="lazy" />
+          </figure>
+          <span class="star gingham" style="--top:44%; --left:38%; --s:70px"></span>
+          <div class="stamp" style="--top:80%; --left:44%">
+            <img src="photos/p13.jpg" alt="" loading="lazy" />
+            <b>21</b>
+          </div>
+          <svg class="postmark" style="--top:78%; --left:62%" viewBox="0 0 200 80" aria-hidden="true">
+            <circle cx="40" cy="40" r="32" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <text x="40" y="36" text-anchor="middle" font-size="11" fill="currentColor">OCT 29</text>
+            <text x="40" y="52" text-anchor="middle" font-size="11" fill="currentColor">2026</text>
+            <path d="M80 22c20-10 40 10 60 0s40 10 60 0M80 40c20-10 40 10 60 0s40 10 60 0M80 58c20-10 40 10 60 0s40 10 60 0" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+        </div>
+
+        <div class="spiral" aria-hidden="true"></div>
+
+        <!-- right side: turnable leaves (first is "sisters", the rest are blank) -->
+        <div class="stack" id="usStack">
+          <div class="leaf">
+            <div class="face face--front page page--right paper paper--grid">
+              <figure class="snap framed-gold tilt-r" style="--w:58%; --top:6%; --left:36%">
+                <img src="photos/p01.jpg" alt="arcade night" loading="lazy" />
+              </figure>
+              <figure class="polaroid tilt-l" style="--w:36%; --top:10%; --left:3%">
+                <img src="photos/p21.jpg" alt="VR ride" loading="lazy" />
+                <figcaption>chaos, together</figcaption>
+              </figure>
+              <figure class="snap torn tilt-l" style="--w:44%; --top:46%; --left:4%">
+                <img src="photos/p29.jpg" alt="" loading="lazy" />
+              </figure>
+              <figure class="snap taped tilt-r" style="--w:46%; --top:52%; --left:50%">
+                <img src="photos/p33.jpg" alt="" loading="lazy" />
+              </figure>
+              <span class="star gingham" style="--top:40%; --left:82%; --s:60px"></span>
+              <span class="sparkle" style="--top:44%; --left:48%">✦</span>
+              <span class="sparkle sm" style="--top:48%; --left:54%">✦</span>
+              <h3 class="ransom ransom--bottom" aria-label="sisters">
+                <i>s</i><i>i</i><i>s</i><i>t</i><i>e</i><i>r</i><i>s</i>
+              </h3>
+            </div>
+            <div class="face face--back page page--left nf">
+              <div class="nf-series">
+                <img class="nf-series__bg" src="videos/memories.jpg" alt="" />
+                <header class="nf-nav">
+                  <span class="nf-logo">NETFLIX</span>
+                  <nav><span>Home</span><span>TV Shows</span><span>Movies</span><span>My List</span></nav>
+                </header>
+                <div class="nf-series__body">
+                  <p class="nf-kind"><b>N</b> Series</p>
+                  <h3 class="nf-title">Memories<span>Vlog.</span></h3>
+                  <p class="nf-stars">★★★★★</p>
+                  <div class="nf-btns">
+                    <button class="nf-play" data-video="memories"><svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z"/></svg>Play</button>
+                    <button class="nf-more" data-info><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 10v7M12 7v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>More Info</button>
+                  </div>
+                  <p class="nf-info" hidden>2026 · 21+ · starring Sela</p>
+                </div>
+                <footer class="nf-tabs"><span>Overview</span><span>Episodes</span><span>Trailer &amp; More</span></footer>
+              </div>
+            </div>
+          </div>
+          <div class="leaf">
+            <div class="face face--front page page--right nf">
+              <div class="nf-who">
+                <span class="nf-logo">NETFLIX</span>
+                <h3>Who's watching?</h3>
+                <div class="nf-profiles">
+                  <button class="nf-profile" data-video="ep1"><img src="videos/ep1.jpg" alt="" /><span>Episode 1</span></button>
+                  <button class="nf-profile" data-video="ep2"><img src="videos/ep2.jpg" alt="" /><span>Episode 2</span></button>
+                  <button class="nf-profile" data-video="ep3"><img src="videos/ep3.jpg" alt="" /><span>Episode 3</span></button>
+                  <button class="nf-profile" data-video="ep4"><img src="videos/ep4.jpg" alt="" /><span>Episode 4</span></button>
+                </div>
+                <button class="nf-manage" data-episodes>Manage profiles</button>
+              </div>
+            </div>
+            <div class="face face--back page page--left nf">
+              <div class="nf-rowpage">
+                <span class="nf-logo">NETFLIX</span>
+                <h3>Continue Watching for Sela</h3>
+                <div class="nf-grid">
+                  <button class="nf-card" data-video="ep5"><img src="videos/ep5.jpg" alt="" /><em class="nf-top10">TOP<b>10</b></em><span class="nf-card__bar"><i style="width:72%"></i></span><span class="nf-card__label">E5</span></button>
+                  <button class="nf-card" data-video="ep6"><img src="videos/ep6.jpg" alt="" /><span class="nf-card__bar"><i style="width:35%"></i></span><span class="nf-card__label">E6</span></button>
+                  <button class="nf-card" data-video="ep7"><img src="videos/ep7.jpg" alt="" /><span class="nf-card__bar"><i style="width:88%"></i></span><span class="nf-card__label">E7</span></button>
+                  <button class="nf-card" data-video="ep8"><img src="videos/ep8.jpg" alt="" /><span class="nf-card__bar"><i style="width:54%"></i></span><span class="nf-card__label">E8</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="leaf">
+            <div class="face face--front page page--right paper paper--grid">
+              <div class="booth" style="--top:5%; --left:6%">
+                <img src="photos/n09.jpg" alt="" loading="lazy" />
+                <img src="photos/n10.jpg" alt="" loading="lazy" />
+                <img src="photos/n11.jpg" alt="" loading="lazy" />
+                <img src="photos/n12.jpg" alt="" loading="lazy" />
+              </div>
+              <figure class="polaroid tilt-r" style="--w:44%; --top:5%; --left:48%">
+                <img src="photos/n14.jpg" alt="" loading="lazy" />
+                <figcaption>that laugh</figcaption>
+              </figure>
+              <figure class="snap natural taped tilt-l" style="--w:40%; --top:47%; --left:52%">
+                <img src="photos/n13.jpg" alt="" loading="lazy" />
+              </figure>
+              <span class="star gingham" style="--top:42%; --left:42%; --s:54px"></span>
+              <h3 class="ransom ransom--bottom" aria-label="glow">
+                <i>g</i><i>l</i><i>o</i><i>w</i>
+              </h3>
+            </div>
+            <div class="face face--back page page--left paper paper--kraft">
+              <div class="negatives" style="--top:5%; --left:5%">
+                <img src="photos/n01.jpg" alt="" loading="lazy" />
+                <img src="photos/n08.jpg" alt="" loading="lazy" />
+              </div>
+              <div class="phone" style="--top:6%; --left:60%">
+                <img src="photos/n02.jpg" alt="video call" loading="lazy" />
+              </div>
+              <figure class="polaroid natural tilt-l" style="--w:27%; --top:47%; --left:10%">
+                <img src="photos/n05.jpg" alt="" loading="lazy" />
+                <figcaption>always on call</figcaption>
+              </figure>
+              <span class="sparkle" style="--top:66%; --left:58%">✦</span>
+              <span class="sparkle sm" style="--top:72%; --left:66%">✦</span>
+            </div>
+          </div>
+          <div class="leaf">
+            <div class="face face--front page page--right paper message">
+              <div class="news" aria-hidden="true"></div>
+              <p class="message__kicker">a special message from</p>
+              <h3 class="message__title">someone special</h3>
+              <div class="message__frame no-flip">
+                <video src="videos/nams.mp4" poster="videos/nams.jpg" controls playsinline preload="metadata"></video>
+              </div>
+              <span class="tape tape--tl"></span>
+              <span class="tape tape--br"></span>
+            </div>
+            <div class="face face--back page page--left paper selikem">
+              <h3 class="selikem__title selikem__title--a">everyone loves</h3>
+              <div class="cluster">
+                <figure><img src="photos/s01.jpg" width="1200" height="900" alt="" /></figure>
+                <figure><img src="photos/s02.jpg" width="675" height="1200" alt="" /></figure>
+                <figure><img src="photos/s03.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s04.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s05.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s06.jpg" width="1200" height="900" alt="" /></figure>
+                <figure><img src="photos/s07.jpg" width="1200" height="900" alt="" /></figure>
+                <figure><img src="photos/s08.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s09.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s10.jpg" width="1200" height="971" alt="" /></figure>
+                <figure><img src="photos/s11.jpg" width="1200" height="900" alt="" /></figure>
+                <figure><img src="photos/s12.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s13.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s14.jpg" width="675" height="1200" alt="" /></figure>
+              </div>
+            </div>
+          </div>
+          <div class="leaf">
+            <div class="face face--front page page--right paper selikem">
+              <h3 class="selikem__title selikem__title--b">selikem</h3>
+              <div class="cluster">
+                <figure><img src="photos/s15.jpg" width="554" height="1200" alt="" /></figure>
+                <figure><img src="photos/s16.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s17.jpg" width="1200" height="900" alt="" /></figure>
+                <figure><img src="photos/s18.jpg" width="1200" height="900" alt="" /></figure>
+                <figure><img src="photos/s19.jpg" width="1200" height="900" alt="" /></figure>
+                <figure><img src="photos/s20.jpg" width="1200" height="900" alt="" /></figure>
+                <figure><img src="photos/s21.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s22.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s23.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s24.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s25.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s26.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s27.jpg" width="900" height="1200" alt="" /></figure>
+                <figure><img src="photos/s28.jpg" width="720" height="900" alt="" /></figure>
+              </div>
+            </div>
+            <div class="face face--back page page--left paper">
+              <figure class="polaroid natural tilt-l" style="--w:40%; --top:5%; --left:6%">
+                <img src="photos/n07.jpg" alt="" loading="lazy" />
+                <figcaption>Selaaa</figcaption>
+              </figure>
+              <figure class="snap natural taped tilt-r" style="--w:34%; --top:7%; --left:56%">
+                <img src="photos/n06.jpg" alt="" loading="lazy" />
+              </figure>
+              <figure class="oval natural" style="--w:22%; --top:55%; --left:56%">
+                <img src="photos/n03.jpg" alt="Sela as a child" loading="lazy" />
+              </figure>
+              <span class="star gingham" style="--top:62%; --left:16%; --s:58px"></span>
+              <h3 class="ransom" aria-label="21" style="top:auto; bottom:6%">
+                <i>2</i><i>1</i>
+              </h3>
+            </div>
+          </div>
+          <div class="page page--right nf stack__base">
+            <div class="nf-next">
+              <span class="nf-logo">NETFLIX</span>
+              <img src="photos/n04.jpg" alt="Sela as a little girl" loading="lazy" />
+              <p class="nf-next__label">Next Episode</p>
+              <h3>Season 22</h3>
+              <p class="nf-next__soon">coming soon</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="book-bar reveal" data-for="usStack" aria-label="Book controls">
+        <button data-book="prev" aria-label="Previous page"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="book-bar__count">1 / 5</span>
+        <button data-book="next" aria-label="Next page"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button data-book="sound" aria-label="Page sound on or off" aria-pressed="true"><svg viewBox="0 0 24 24"><path class="fill" d="M4 9v6h4l5 4V5L8 9z"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/></svg></button>
+      </div>
+    </section>
+
+    <!-- ============ BIG 21 ============ -->
+    <section class="twentyone" aria-label="Twenty one">
+      <h2 class="photo-text reveal" style="--img:url('photos/p18.jpg')">21</h2>
+      <p class="twentyone__sub reveal">and only getting brighter</p>
+    </section>
+
+    <!-- ============ FILM STRIP ============ -->
+    <section class="runway" aria-label="Outfit photos">
+      <p class="kicker center reveal">main character energy</p>
+      <div class="film">
+        <div class="film__track">
+          <img src="photos/p07.jpg" alt="" loading="lazy" />
+          <img src="photos/p08.jpg" alt="" loading="lazy" />
+          <img src="photos/p17.jpg" alt="" loading="lazy" />
+          <img src="photos/p25.jpg" alt="" loading="lazy" />
+          <img src="photos/p26.jpg" alt="" loading="lazy" />
+          <img src="photos/p28.jpg" alt="" loading="lazy" />
+          <img src="photos/p32.jpg" alt="" loading="lazy" />
+          <img src="photos/p37.jpg" alt="" loading="lazy" />
+          <img src="photos/p02.jpg" alt="" loading="lazy" />
+          <img src="photos/p05.jpg" alt="" loading="lazy" />
+          <img src="photos/p12.jpg" alt="" loading="lazy" />
+          <img src="photos/p23.jpg" alt="" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SCRAPBOOK: MORE ============ -->
+    <section class="book-wrap" id="more">
+      <div class="book reveal">
+        <div class="page page--left paper paper--kraft">
+          <figure class="polaroid tilt-r" style="--w:44%; --top:6%; --left:6%">
+            <img src="photos/p19.jpg" alt="" loading="lazy" />
+            <figcaption>the hair tho</figcaption>
+          </figure>
+          <figure class="snap taped tilt-l" style="--w:50%; --top:12%; --left:46%">
+            <img src="photos/p20.jpg" alt="" loading="lazy" />
+          </figure>
+          <figure class="snap torn tilt-l" style="--w:52%; --top:56%; --left:8%">
+            <img src="photos/p30.jpg" alt="" loading="lazy" />
+          </figure>
+          <figure class="oval" style="--w:34%; --top:58%; --left:60%">
+            <img src="photos/p03.jpg" alt="" loading="lazy" />
+          </figure>
+          <span class="star gingham" style="--top:46%; --left:50%; --s:56px"></span>
+        </div>
+
+        <div class="spiral" aria-hidden="true"></div>
+
+        <!-- right side: turnable leaves -->
+        <div class="stack" id="moreStack">
+          <div class="leaf">
+            <div class="face face--front page page--right paper">
+              <div class="news" aria-hidden="true"></div>
+              <figure class="snap framed-gold tilt-l" style="--w:56%; --top:8%; --left:8%">
+                <img src="photos/p31.jpg" alt="" loading="lazy" />
+              </figure>
+              <figure class="polaroid tilt-r" style="--w:36%; --top:14%; --left:60%">
+                <img src="photos/p04.jpg" alt="" loading="lazy" />
+                <figcaption>serving</figcaption>
+              </figure>
+              <figure class="snap taped tilt-r" style="--w:44%; --top:58%; --left:46%">
+                <img src="photos/p13.jpg" alt="" loading="lazy" />
+              </figure>
+              <h3 class="ransom ransom--side" aria-label="forever">
+                <i>f</i><i>o</i><i>r</i><i>e</i><i>v</i><i>e</i><i>r</i>
+              </h3>
+              <span class="sparkle" style="--top:52%; --left:20%">✦</span>
+            </div>
+            <div class="face face--back page page--left paper pill-page">
+              <div class="capsule-art" aria-hidden="true"><span>21</span></div>
+              <div class="rx">
+                <p class="rx__head"><b>Rx</b> TIME PILL</p>
+                <dl>
+                  <dt>for</dt><dd>Sela</dd>
+                  <dt>take</dt><dd>once, on 29 · 10 · 2026</dd>
+                  <dt>contains</dt><dd>21 years of you</dd>
+                </dl>
+                <p class="rx__warn">may cause happy tears</p>
+              </div>
+              <figure class="polaroid natural tilt-r" style="--w:30%; --top:62%; --left:60%">
+                <img src="photos/baby.jpg" alt="" loading="lazy" />
+                <figcaption>dose one</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="leaf">
+            <div class="face face--front page page--right paper pill-page">
+              <p class="pill-words">you've grown so big,<br>and so tall,<br>and so beautiful.</p>
+              <div class="pill no-flip">
+                <video src="videos/timecapsule.mp4" poster="videos/timecapsule.jpg" playsinline preload="metadata"></video>
+                <span class="pill__shell" aria-hidden="true"></span>
+                <button class="pill__play" aria-label="Play the time pill"><svg viewBox="0 0 24 24"><path d="M7 4l14 8-14 8z"/></svg></button>
+                <span class="pill__progress" aria-hidden="true"><i></i></span>
+              </div>
+            </div>
+            <div class="face face--back page page--left paper loved">
+              <h3 class="loved__head">you are loved for…</h3>
+              <figure class="polaroid natural tilt-l" style="--w:30%; --top:13%; --left:6%">
+                <img src="photos/t01.jpg" width="480" height="640" alt="" loading="lazy" />
+                <figcaption>being a gift from day one</figcaption>
+              </figure>
+              <figure class="polaroid natural tilt-r" style="--w:30%; --top:22%; --left:60%">
+                <img src="photos/t02.jpg" width="750" height="1000" alt="" loading="lazy" />
+                <figcaption>your crown of curls</figcaption>
+              </figure>
+              <figure class="polaroid natural tilt-l" style="--w:30%; --top:57%; --left:24%">
+                <img src="photos/t03.jpg" width="480" height="640" alt="" loading="lazy" />
+                <figcaption>your silly faces</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="leaf">
+            <div class="face face--front page page--right paper loved">
+              <h3 class="loved__head">you are loved for…</h3>
+              <figure class="polaroid natural tilt-l" style="--w:30%; --top:13%; --left:6%">
+                <img src="photos/t04.jpg" width="750" height="1000" alt="" loading="lazy" />
+                <figcaption>your cheek</figcaption>
+              </figure>
+              <figure class="polaroid natural tilt-r" style="--w:38%; --top:22%; --left:56%">
+                <img src="photos/t05.jpg" width="1000" height="750" alt="" loading="lazy" />
+                <figcaption>your swagger</figcaption>
+              </figure>
+              <figure class="polaroid natural tilt-l" style="--w:30%; --top:57%; --left:24%">
+                <img src="photos/t06.jpg" width="750" height="1000" alt="" loading="lazy" />
+                <figcaption>your main-character poses</figcaption>
+              </figure>
+            </div>
+            <div class="face face--back page page--left paper loved">
+              <h3 class="loved__head">you are loved for…</h3>
+              <figure class="polaroid natural tilt-l" style="--w:30%; --top:13%; --left:6%">
+                <img src="photos/t07.jpg" width="750" height="1000" alt="" loading="lazy" />
+                <figcaption>your love of good food</figcaption>
+              </figure>
+              <figure class="polaroid natural tilt-r" style="--w:30%; --top:22%; --left:60%">
+                <img src="photos/t08.jpg" width="750" height="1000" alt="" loading="lazy" />
+                <figcaption>your loyalty</figcaption>
+              </figure>
+              <figure class="polaroid natural tilt-l" style="--w:30%; --top:57%; --left:24%">
+                <img src="photos/t09.jpg" width="750" height="1000" alt="" loading="lazy" />
+                <figcaption>your smile</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="page page--right stack__base paper loved">
+              <h3 class="loved__head">you are loved for…</h3>
+              <figure class="polaroid natural tilt-l" style="--w:38%; --top:13%; --left:5%">
+                <img src="photos/t10.jpg" width="1000" height="742" alt="" loading="lazy" />
+                <figcaption>your free spirit</figcaption>
+              </figure>
+              <figure class="polaroid natural tilt-r" style="--w:30%; --top:22%; --left:60%">
+                <img src="photos/t11.jpg" width="610" height="610" alt="" loading="lazy" />
+                <figcaption>your grace</figcaption>
+              </figure>
+              <figure class="polaroid natural tilt-l" style="--w:30%; --top:57%; --left:24%">
+                <img src="photos/t12.jpg" width="750" height="1000" alt="" loading="lazy" />
+                <figcaption>your glow</figcaption>
+              </figure>
+            </div>
+        </div>
+      </div>
+
+      <div class="book-bar reveal" data-for="moreStack" aria-label="Book controls">
+        <button data-book="prev" aria-label="Previous page"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="book-bar__count">1 / 4</span>
+        <button data-book="next" aria-label="Next page"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button data-book="sound" aria-label="Page sound on or off" aria-pressed="true"><svg viewBox="0 0 24 24"><path class="fill" d="M4 9v6h4l5 4V5L8 9z"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/></svg></button>
+      </div>
+    </section>
+
+    <!-- ============ LETTER ============ -->
+    <section class="letter-wrap" id="letter">
+      <div class="crescent-deco" aria-hidden="true"></div>
+      <article class="letter reveal">
+        <figure class="polaroid letter__pic tilt-r">
+          <img src="photos/p25.jpg" alt="Sela smiling" loading="lazy" />
+          <figcaption>my ratatouille</figcaption>
+        </figure>
+
+        <p class="letter__salute">Dear Sela,</p>
+
+        <p>You are the epitome of beauty. Not the kind that describes facial features or skin or smile. I mean you have that but part of your beauty lies in who you are as a person. You have a beautiful soul. You are kind, you are caring, you are strong. You are my advisor when I have no idea what I am doing, you are my counsellor when I feel lost and crowded, you are a loving soul when I think I am alone and most of all you are my best friend.</p>
+
+        <p>The first day I met you I knew you were a b*tch ass nigga and that we would go far. You kept staring at me, which was kinda weird but whatever. Few days after we met we just locked in. I think you are what some say soul sisters or soul mate or whatever. Your have a light in you that seems to bright up everywhere you go... with your cute and chinese eyes whenever you smile. <span class="aside">[I don't know but that just sounds racists😂]</span></p>
+
+        <p>You are a wonderful person and I am just privileged to experience the real you, the unfiltered you, the you before the world started being mean to you, all the yous before you decided to shield up. But I see you Sela, you are just a soft, sweet, ratatouille. Thank you for being present.</p>
+
+        <p>Thank you for helping me live. God BLESS you !!</p>
+
+        <p class="letter__love">And I love you.</p>
+      </article>
+    </section>
+
+    <!-- ============ FINALE ============ -->
+    <section class="finale" id="wish">
+      <div class="sky" aria-hidden="true"></div>
+      <h2 class="reveal">Make a wish</h2>
+      <p class="finale__hint reveal">tap the candles</p>
+
+      <div class="cake reveal" id="cake" role="button" tabindex="0" aria-label="Blow out the candles">
+        <div class="candles">
+          <span class="candle"><i class="flame"></i></span>
+          <span class="candle"><i class="flame"></i></span>
+        </div>
+        <div class="tier tier--top"><span>2</span><span>1</span></div>
+        <div class="tier tier--bottom"></div>
+        <div class="plate"></div>
+      </div>
+
+      <p class="finale__msg" id="wishMsg" aria-live="polite"></p>
+
+      <footer class="foot">
+        <span class="mini-moon" aria-hidden="true"></span>
+        <p>happy birthday, Sela · 29.10.2026</p>
+      </footer>
+    </section>
+  </main>
+
+  <!-- netflix-style player -->
+  <div class="nfp" id="player" hidden>
+    <video playsinline preload="none"></video>
+    <div class="nfp__top">
+      <button class="nfp__back" data-act="close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <span class="nf-logo">NETFLIX</span>
+      <span class="nfp__title"></span>
+    </div>
+    <button class="nfp__center" data-act="toggle" aria-label="Play or pause"></button>
+    <div class="nfp__bottom">
+      <div class="nfp__bar">
+        <div class="nfp__progress"><span class="nfp__fill"></span><span class="nfp__knob"></span></div>
+        <time class="nfp__time">00:00:00</time>
+      </div>
+      <div class="nfp__controls">
+        <button data-act="toggle" class="nfp__pp" aria-label="Play or pause"><svg viewBox="0 0 24 24"><path class="i-play" d="M7 4l14 8-14 8z"/><path class="i-pause" d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg></button>
+        <button data-act="back10" aria-label="Back 10 seconds"><svg viewBox="0 0 24 24"><path class="ln" d="M12 5a7 7 0 1 1-7 7"/><path d="M12 1v8L7 5z"/></svg></button>
+        <button data-act="fwd10" aria-label="Forward 10 seconds"><svg viewBox="0 0 24 24"><path class="ln" d="M12 5a7 7 0 1 0 7 7"/><path d="M12 1v8l5-4z"/></svg></button>
+        <span class="nfp__spacer"></span>
+        <button data-act="episodes"><svg viewBox="0 0 24 24"><rect class="ln" x="3" y="7" width="14" height="13" rx="1"/><path class="ln" d="M7 4h14v13"/></svg>Episodes</button>
+        <button data-act="mute"><svg viewBox="0 0 24 24"><rect class="ln" x="3" y="5" width="18" height="13" rx="1"/><path class="ln" d="M7 14h4M13 14h4M7 11h10"/></svg><span class="nfp__mute-label">Audio &amp; Subtitles</span></button>
+        <button data-act="next"><svg viewBox="0 0 24 24"><path d="M5 4l11 8-11 8z"/><path d="M18 4h2v16h-2z"/></svg>Next Episode</button>
+        <button data-act="full" aria-label="Fullscreen"><svg viewBox="0 0 24 24"><path class="ln" d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+      </div>
+    </div>
+    <aside class="nfp__eps" hidden>
+      <h4>Episodes</h4>
+      <ol></ol>
+    </aside>
+  </div>
+
+  <!-- lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" aria-label="Close">×</button>
+    <img alt="" />
+  </div>
+
+  <script type="importmap">
+    { "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+  <script src="main.js?v=9"></script>
+  <script src="netflix.js?v=9"></script>
+  <script type="module" src="intro3d.js?v=4"></script>
+  <script type="module" src="moon3d.js?v=4"></script>
+</body>
+</html>

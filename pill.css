@@ -1,0 +1,147 @@
+/* ==========================================================
+   Second book: the time pill + "you are loved for…"
+   ========================================================== */
+
+/* --- left page: a pharmacy-style label for the time pill --- */
+.capsule-art {
+  position: absolute;
+  top: 9cqh;
+  left: 50%;
+  width: 62cqw;
+  height: 21cqw;
+  translate: -50% 0;
+  rotate: -16deg;
+  border-radius: 999px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 1.6cqw 3cqw rgba(43,26,20,.35), inset 0 -1.2cqw 2cqw rgba(0,0,0,.18);
+  z-index: 2;
+}
+.capsule-art::before,
+.capsule-art::after { content: ""; }
+.capsule-art::before { background: linear-gradient(180deg, #a52a3a, var(--burgundy) 60%, #4a0b14); }
+.capsule-art::after { background: linear-gradient(180deg, #fffaf3, #efe1cc 60%, #d8c6aa); }
+.capsule-art span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--display);
+  font-size: 9cqw;
+  color: var(--gold);
+  letter-spacing: .1em;
+  text-shadow: 0 1px 0 rgba(0,0,0,.25);
+  /* glossy highlight across the capsule */
+  background: linear-gradient(180deg, rgba(255,255,255,.55) 0 12%, transparent 30%);
+}
+.rx {
+  position: absolute;
+  top: 34cqh;
+  left: 9cqw;
+  width: 54cqw;
+  padding: 3cqw 3.6cqw;
+  background: #fffdf8;
+  border: 2px solid var(--burgundy);
+  box-shadow: 0 .8cqw 2cqw rgba(43,26,20,.25);
+  rotate: -2deg;
+  font-family: var(--type);
+  color: var(--ink);
+  z-index: 2;
+}
+.rx__head { margin: 0 0 2cqw; padding-bottom: 1.6cqw; border-bottom: 2px dashed var(--burgundy); font-size: 4.4cqw; letter-spacing: .12em; color: var(--burgundy); }
+.rx__head b { font-family: var(--display); font-weight: 400; font-size: 6.4cqw; margin-right: 1cqw; }
+.rx dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 1.2cqw 3cqw; font-size: 3cqw; }
+.rx dt { text-transform: uppercase; letter-spacing: .15em; color: var(--wine); }
+.rx dd { margin: 0; font-family: var(--hand); font-size: 4.2cqw; line-height: 1; }
+.rx__warn { margin: 2.4cqw 0 0; font-size: 2.4cqw; text-transform: uppercase; letter-spacing: .14em; color: var(--wine); }
+
+/* --- right page: the video inside a capsule --- */
+.pill-words {
+  position: absolute;
+  top: 6cqh;
+  left: 8cqw;
+  right: 8cqw;
+  margin: 0;
+  font-family: var(--script);
+  font-size: 5cqw;
+  line-height: 1.5;
+  color: var(--burgundy);
+  rotate: -3deg;
+  z-index: 3;
+}
+.pill {
+  position: absolute;
+  left: 50%;
+  bottom: 6cqh;
+  width: 42cqw;
+  aspect-ratio: 9 / 16.6;
+  translate: -50% 0;
+  rotate: 4deg;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 2cqw 4cqw rgba(43,26,20,.45);
+  z-index: 3;
+}
+.pill video { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* capsule shell: tinted burgundy top half, clear bottom half, seam in the middle */
+.pill__shell {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.4) 0 6%, transparent 18% 82%, rgba(0,0,0,.25) 100%),
+    linear-gradient(180deg, rgba(107,15,26,.5) 0 49.4%, rgba(255,250,243,.95) 49.4% 50.6%, rgba(255,250,243,.06) 50.6%);
+  box-shadow: inset 0 0 0 1.2cqw rgba(107,15,26,.85), inset 0 0 0 1.8cqw rgba(255,250,243,.5);
+  transition: opacity .6s;
+}
+.pill.playing .pill__shell { opacity: .35; }
+.pill__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14cqw;
+  height: 14cqw;
+  translate: -50% -50%;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255,250,243,.9);
+  color: var(--burgundy);
+  box-shadow: 0 1cqw 2.4cqw rgba(0,0,0,.35);
+  transition: opacity .3s, scale .3s;
+}
+.pill__play svg { width: 6cqw; height: 6cqw; fill: currentColor; margin-left: .8cqw; }
+.pill__play:hover { scale: 1.08; }
+.pill.playing .pill__play { opacity: 0; pointer-events: none; }
+.pill__progress {
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 6%;
+  height: .8cqw;
+  border-radius: 1cqw;
+  background: rgba(255,255,255,.35);
+  overflow: hidden;
+  pointer-events: none;
+}
+.pill__progress i { display: block; height: 100%; width: 0; background: var(--gold); }
+
+/* --- "you are loved for…" pages --- */
+.loved__head {
+  position: absolute;
+  top: 3.5cqh;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: 6.4cqw;
+  color: var(--burgundy);
+  z-index: 3;
+}
+.loved .polaroid figcaption { font-size: 4cqw; }
