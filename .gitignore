@@ -3,3 +3,6 @@ photos/p10.jpg
 photos/p11.jpg
 photos/p38.jpg
 .vercel
+
+.vercel
+.env*
