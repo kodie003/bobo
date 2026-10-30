@@ -25,7 +25,7 @@
   function open(i, showList = false) {
     current = i;
     const ep = EPISODES[i];
-    video.src = `videos/${ep.id}.mp4`;
+    video.src = `videos/${ep.id}.mp4?v=2`; // ?v= so phones drop cached copies of older encodes
     video.poster = `videos/${ep.id}.jpg`;
     title.textContent = ep.title;
     epsList.querySelectorAll("button").forEach((b) => b.classList.toggle("current", +b.dataset.ep === i));
